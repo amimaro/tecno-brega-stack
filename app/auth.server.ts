@@ -29,6 +29,21 @@ export async function getUser(accessToken: string): Promise<{
   return await supabaseClient.auth.api.getUser(accessToken);
 }
 
+export async function isAuthenticated(request: Request): Promise<boolean> {
+  const session = await getCookieSession(request);
+  const authSessionData = session.get(sessionKey);
+
+  const isSessionExpired = authSessionData
+    ? Date.now() / 1000 > authSessionData?.expires_at!
+    : true;
+
+  if (!authSessionData || !authSessionData.access_token || isSessionExpired) {
+    return false;
+  }
+
+  return true;
+}
+
 export const handleSignOutSession = async (
   request: Request,
   redirectTo: string = "/"
@@ -193,19 +208,4 @@ export async function handleAuthSession(
   session.set(sessionKey, supabaseClientSession);
 
   return { session, sessionData: supabaseClientSession, supabaseClient };
-}
-
-export async function isAuthenticated(request: Request): Promise<boolean> {
-  const session = await getCookieSession(request);
-  const authSessionData = session.get(sessionKey);
-
-  const isSessionExpired = authSessionData
-    ? Date.now() / 1000 > authSessionData?.expires_at!
-    : true;
-
-  if (!authSessionData || !authSessionData.access_token || isSessionExpired) {
-    return false;
-  }
-
-  return true;
 }
