@@ -19,6 +19,14 @@ export const action: ActionFunction = async ({ request }) => {
 export default function SignUp() {
   const actionData = useActionData();
 
+  // if (actionData?.success) {
+  //   return (
+  //     <div>
+  //       <h1>Please, check you email to confirm your registration.</h1>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div>
       <h1>SignUp</h1>
@@ -26,36 +34,15 @@ export default function SignUp() {
       <Form method="post">
         <div>
           <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            defaultValue="amir.zahlan@gmail.com"
-          />
+          <input type="email" name="email" />
         </div>
         <div>
           <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            defaultValue="123456"
-          />
+          <input type="password" name="password" />
         </div>
+        <br />
         <button>Submit</button>
       </Form>
-      {/* <fetcher.Form method="post" action="/auth-actions/invite">
-        <div>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            defaultValue="amir.zahlan@gmail.com"
-            hidden
-          />
-        </div>
-        <button>Resend email</button>
-      </fetcher.Form> */}
     </div>
   );
 }

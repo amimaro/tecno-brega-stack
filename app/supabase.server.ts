@@ -3,6 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
+      SERVER_URL: string;
       SUPABASE_URL: string;
       SUPABASE_ANON_KEY: string;
       SUPABASE_SERVICE_ROLE_KEY: string;

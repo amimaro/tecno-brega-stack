@@ -29,6 +29,44 @@ export async function getUser(accessToken: string): Promise<{
   return await supabaseClient.auth.api.getUser(accessToken);
 }
 
+export const handleSignOutSession = async (
+  request: Request,
+  redirectTo: string = "/"
+) => {
+  const session = await getSession(request.headers.get("Cookie"));
+  return redirect(redirectTo, {
+    headers: {
+      "Set-Cookie": await destroySession(session),
+    },
+  });
+};
+
+export const handleForgotPassword = async (
+  request: Request,
+  email: string
+): Promise<Response> => {
+  const { data, error } = await supabaseClient.auth.api.resetPasswordForEmail(
+    email,
+    {
+      redirectTo: `${process.env.SERVER_URL}/reset-password`,
+    }
+  );
+  return handleResponse(request, { data, error });
+};
+
+export const handleResetPassword = async (
+  request: Request,
+  { accessToken, newPassword }: { accessToken: string; newPassword: string }
+): Promise<Response> => {
+  const { data, error } = await supabaseClient.auth.api.updateUser(
+    accessToken,
+    {
+      password: newPassword,
+    }
+  );
+  return handleResponse(request, { data, error });
+};
+
 export const handleResponse = async (
   request: Request,
   {
@@ -60,18 +98,6 @@ export const handleResponse = async (
   }
 
   return json(response);
-};
-
-export const handleSignOutSession = async (
-  request: Request,
-  redirectTo: string = "/"
-) => {
-  const session = await getSession(request.headers.get("Cookie"));
-  return redirect(redirectTo, {
-    headers: {
-      "Set-Cookie": await destroySession(session),
-    },
-  });
 };
 
 export const handleCreateUser = async (
