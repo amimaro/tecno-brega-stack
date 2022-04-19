@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { LoaderFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,7 +6,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { isAuthenticated } from "./auth.server";
 import Navigation from "./components/Navigation";
 
 export const meta: MetaFunction = () => ({
@@ -15,7 +17,15 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+export const loader: LoaderFunction = async ({ request }) => {
+  return {
+    isAuthenticated: await isAuthenticated(request),
+  };
+};
+
 export default function App() {
+  const { isAuthenticated } = useLoaderData();
+
   return (
     <html lang="en">
       <head>
@@ -23,8 +33,8 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Navigation />
-        <Outlet />
+        <Navigation isAuthenticated={isAuthenticated} />
+        <Outlet context={{ isAuthenticated }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
