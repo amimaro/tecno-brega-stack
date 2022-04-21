@@ -15,10 +15,6 @@ export const { getSession, commitSession, destroySession } =
     cookie: {
       name: sessionKey,
 
-      domain:
-        process.env.NODE_ENV === "production"
-          ? process.env.SERVER_URL
-          : "localhost",
       httpOnly: true,
       path: "/",
       sameSite: "lax",
