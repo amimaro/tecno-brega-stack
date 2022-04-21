@@ -5,22 +5,25 @@
   "license": "",
   "sideEffects": false,
   "scripts": {
+    "dev": "remix dev",
     "build": "remix build",
-    "dev": "remix dev"
+    "start": "remix-serve build",
+    "deploy": "flyctl deploy --remote-only"
   },
   "dependencies": {
-    "@remix-run/node": "^1.4.1",
-    "@remix-run/react": "^1.4.1",
-    "@remix-run/vercel": "^1.4.1",
+    "@remix-run/node": "*",
+    "@remix-run/react": "*",
+    "@remix-run/serve": "*",
+    "@remix-run/vercel": "*",
     "@supabase/supabase-js": "^1.33.3",
     "@vercel/node": "^1.14.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.4.1",
-    "@remix-run/eslint-config": "^1.4.1",
-    "@remix-run/serve": "^1.4.1",
+    "@remix-run/dev": "*",
+    "@remix-run/eslint-config": "*",
+    "@types/node": "^17.0.25",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
     "eslint": "^8.11.0",
