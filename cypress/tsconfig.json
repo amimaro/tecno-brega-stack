@@ -1,0 +1,16 @@
+{
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "types": ["node", "cypress"],
+    "esModuleInterop": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "target": "es2019",
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["../types", "../node_modules/@types"]
+  }
+}
