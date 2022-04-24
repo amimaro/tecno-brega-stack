@@ -13,19 +13,19 @@ export const action: ActionFunction = async ({ request }) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  return handleCreateUser(request, { email, password }, "/check-email");
+  return handleCreateUser(request, { email, password });
 };
 
 export default function SignUp() {
   const actionData = useActionData();
 
-  // if (actionData?.success) {
-  //   return (
-  //     <div>
-  //       <h1>Please, check you email to confirm your registration.</h1>
-  //     </div>
-  //   );
-  // }
+  if (actionData?.success) {
+    return (
+      <div>
+        <h1>Please, check you email to confirm your registration.</h1>
+      </div>
+    );
+  }
 
   return (
     <div>

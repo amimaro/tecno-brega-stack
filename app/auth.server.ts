@@ -123,8 +123,7 @@ export const handleCreateUser = async (
   }: {
     email: string;
     password: string;
-  },
-  successRedirect: string = "/"
+  }
 ): Promise<Response> => {
   const { data, error } = await supabaseAdmin.auth.api.createUser({
     email,
@@ -132,11 +131,7 @@ export const handleCreateUser = async (
     email_confirm: true,
   });
 
-  if (error) {
-    return handleResponse(request, { data, error });
-  }
-
-  return redirect(successRedirect);
+  return handleResponse(request, { data, error });
 };
 
 export const handleSignInWithEmailAndPassword = async (
