@@ -10,7 +10,8 @@
     "start": "remix-serve build",
     "deploy": "flyctl deploy --remote-only",
     "cy:run": "npm run build && dotenv -v PORT=8811 -e .env start-server-and-test http://localhost:8811 \"cypress run\"",
-    "cy:open": "dotenv -e .env start-server-and-test dev http://localhost:3000 \"cypress open\""
+    "cy:open": "dotenv -e .env start-server-and-test dev http://localhost:3000 \"cypress open\"",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@remix-run/node": "*",
@@ -19,6 +20,8 @@
     "@remix-run/vercel": "*",
     "@supabase/supabase-js": "^1.33.3",
     "@vercel/node": "^1.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
@@ -37,5 +40,6 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "prettier": {}
 }
