@@ -4,11 +4,13 @@
 
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
-If you are curious. [What is tecno brega?](https://en.wikipedia.org/wiki/Tecno_brega)
-
 ```
 npx create-remix --template amimaro/tecno-brega-stack
 ```
+
+If you are curious. 
+- [What is tecno brega?](https://en.wikipedia.org/wiki/Tecno_brega)
+- [What it sounds?](https://www.youtube.com/watch?v=gmQ3Yp2rizM)
 
 ## What's in the stack
 
@@ -79,7 +81,7 @@ Other funcionalities can be found at the [routes folder](./app/routes) like:
 
 ## Deployment
 
-This Remix Stack comes with a script that handle deploying your app to production.
+This Remix Stack comes with a script that handles deploying your app to production.
 
 Prior to your first deployment, you'll need to do a few things:
 
@@ -95,6 +97,12 @@ Prior to your first deployment, you'll need to do a few things:
 
   ```sh
   flyctl secrets set [COPY .env and paste here]
+  ```
+
+- Run the script below to deploy
+ 
+   ```sh
+  npm run deploy
   ```
 
 ## Testing
