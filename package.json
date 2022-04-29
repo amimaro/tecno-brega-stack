@@ -9,8 +9,8 @@
     "build": "remix build",
     "start": "remix-serve build",
     "deploy": "flyctl deploy --remote-only",
-    "cy:run": "npm run build && dotenv -v PORT=8811 -e .env start-server-and-test http://localhost:8811 \"cypress run\"",
     "cy:open": "dotenv -e .env start-server-and-test dev http://localhost:3000 \"cypress open\"",
+    "cy:run": "npm run build && dotenv -v PORT=8811 -e .env start-server-and-test http://localhost:8811 \"cypress run\"",
     "typecheck": "tsc -b && tsc -b cypress",
     "lint": "eslint --cache --cache-location ./node_modules/.cache/eslint .",
     "format": "prettier --write ."
