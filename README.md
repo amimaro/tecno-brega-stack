@@ -96,7 +96,7 @@ Prior to your first deployment, you'll need to do a few things:
 - Add the environment variables to your fly app secrets, to do this you can run the following command using `.env` variables:
 
   ```sh
-  flyctl secrets set [COPY .env and paste here]
+  flyctl secrets set [Copy .env variables and paste here]
   ```
 
 - Run the script below to deploy
