@@ -1,6 +1,6 @@
 # Remix Tecnobrega Stack
 
-![The Remix Tecnobrega Stack](https://raw.githubusercontent.com/amimaro/files/main/remix-tecno-brega-stack.png)
+![The Remix Tecnobrega Stack](https://raw.githubusercontent.com/amimaro/files/main/remix-tecno-brega-stack.jpg)
 
 Learn more about [Remix Stacks](https://remix.run/stacks).
 
